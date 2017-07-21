@@ -13,14 +13,14 @@
 ######################################
 # target
 ######################################
-TARGET = STM32F401C-MX
+TARGET = Demo
 
 
 ######################################
 # building variables
 ######################################
 # debug build?
-DEBUG = 1
+DEBUG = 0
 # optimization
 OPT = -Og
 
@@ -202,5 +202,11 @@ clean:
 # dependencies
 #######################################
 -include $(shell mkdir .dep 2>/dev/null) $(wildcard .dep/*)
+
+#######################################
+# upload
+#######################################
+upload: $(BUILD_DIR)/$(TARGET).hex
+	st-flash --format ihex write $(BUILD_DIR)/$(TARGET).hex
 
 # *** EOF ***
